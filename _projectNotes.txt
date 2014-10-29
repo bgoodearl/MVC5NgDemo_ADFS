@@ -1,0 +1,57 @@
+
+Code Camp Demonstration app
+Hybrid MVC / AngularJS mini-SPA app
+
+A) - set up initial structure of application
+
+1) Create MVCDemo web app - MVC + WebAPI with No Authentication
+2) Rename solution to MVC5NgDemo, rename project file
+3) Package Updates
+	bootstrap to 3.2
+	Mvc to 5.2.2 (also gets Razor to 3.2.2, WebPages to 3.2.2)
+	Newtonsoft.Json 6.0.6
+	jQuery to 2.1.1
+	WebApi.WebHost to 5.2.2 (also gets WebApi.Client WebApi.Core)
+	WebApi to 5.2.2
+	WebApi.HelpPage to 5.2.2
+	(updates _ViewStart.cshtml)
+4) Added Packages
+	EntityFramework 6.1.1
+	AngularJS.Route 1.3.0
+	gets AngularJS.Core 1.3.0
+5) Separated out views for _TopNav and _Footer
+6) Added render section "headend" to _Layout
+7) Moved meta for viewport down
+8) Uninstalled Modernizr
+9) Enabled HTTPS, updated default URL
+10) Edited homepage to be more informative for demo
+--Commit to GitHub
+
+11) Added projects with model(s) and Entity Framework repository for persistent data
+12) Created API folder for WebApi controllers, moved ValuesController there
+13) Added references to Model and EFDAL assemblies
+14) Added Rehearsals controller for WebApi
+15) Added connection string to web.config
+--Commit to GitHub
+
+** In order for this to work, create database MVCDemo (or whatever you want to call it) using SSMS
+** OR change the connection string to create a local database
+** Run script Schema1_Initial.sql from BGoodMusic.EFDAL\BGM_SqlScripts
+** OR let EF create the table automagically
+** Then use Visual Studio or SSMS to manually add some entries to the Rehearsals table
+** Change the name of the database in the connection string in web.config to match your database name
+
+16) Switched to Attribute Routing, added /demo/ to URL paths
+	(this allows separation of cookies between front-end and WebAPI)
+	Add MapMvcAttributeRoutes in RouteConfig.cs
+17) Added routing rules to Home controller
+18) Added Root Hit Redirect rule in web.config
+19) Added RehearsalListItem under new folder ViewModels
+20) Added Music controller and code in Index method to show list of rehearsals from server side
+21) Added menu entry in _TopNav
+--Commit to GitHub
+
+*******************************
+PART B - Adding Auth using ADFS
+*******************************
+1) Renamed solution and project files to help keep things straight between different solutions

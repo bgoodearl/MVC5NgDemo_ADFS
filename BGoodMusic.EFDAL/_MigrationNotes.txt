@@ -1,0 +1,9 @@
+﻿
+
+
+Add-Migration Schema1
+
+Update-Database -Script -SourceMigration:$InitialDatabase -TargetMigration:Schema1
+
+Update-Database -Verbose
+

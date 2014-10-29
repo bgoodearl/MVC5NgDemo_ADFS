@@ -1,0 +1,10 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="AfterBuildOutputCopy" AfterTargets="Build">
+    <Copy SourceFiles="$(TargetDir)$(TargetFileName);
+$(TargetDir)/$(TargetName).pdb"
+	DestinationFolder="$(ProjectDir)..\_Binaries\$(Configuration)" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" />
+    <Copy SourceFiles="$(TargetDir)$(TargetFileName);
+$(TargetDir)/$(TargetName).pdb"
+	DestinationFolder="$(ProjectDir)..\_Binaries" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" />
+  </Target>
+</Project>
