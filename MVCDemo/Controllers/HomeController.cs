@@ -10,6 +10,7 @@ namespace MVCDemo.Controllers
     [Route("{action}")]
     public class HomeController : Controller
     {
+        [AllowAnonymous]
         [Route("~/demo/")]
         [Route]
         [Route("index")]

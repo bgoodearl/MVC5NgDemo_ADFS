@@ -51,7 +51,62 @@ A) - set up initial structure of application
 21) Added menu entry in _TopNav
 --Commit to GitHub
 
-*******************************
-PART B - Adding Auth using ADFS
-*******************************
+*******************************************
+PART B - Adding Auth for MVC App using ADFS
+*******************************************
 1) Renamed solution and project files to help keep things straight between different solutions
+2) Add Startup class to web project
+3) Install packages
+	Microsoft.Owin.Security.WsFederation (3.0.0)
+		also gets
+		Owin (1.0.0)
+		Microsoft.Owin (3.0.0)
+		Microsoft.Owin.Security (3.0.0)
+		System.IdentityModel.Tokens.Jwt (4.0.0)
+		Microsoft.IdentityModel.Protocol.Extensions (1.0.0)
+	Microsoft.Owin.Security.Cookies (3.0.0)
+	Microsoft.Owin.Security.OAuth (3.0.0)
+	Microsoft.Owin.Host.SystemWeb (3.0.0)
+	(Added dependentAssembly "Microsoft.Owin" in web.config)
+	(reordered references in .csproj for easier comparison)
+	(updated port #'s in csproj to differentiate from MVC5NgDemo, from which this was copied
+	 updated IISExpressSSLPort to match)
+
+4) Add using statements to Startup
+	Microsoft.Owin
+	Owin
+5) Added Auth controller, with Login, LoggedIn and Logout actions
+6) Added View for LoggedIn
+7) Added Test controller
+8) In Startup - Add app.UseCookieAuthentication
+9) In Startup - Add app.UseWsFederationAuthentication
+10) In ADFS, Add Relying Party Trust
+	Enter data about the relying party manually - Next
+	Enter the Display Name, and any Notes that will be helpful - Next
+	AD FS profile - Next
+	No token encryption - Next
+	WS-Federation - add endpoint (from app properties in VS, plus "demo" used with routing) - Next
+		https://localhost:44306/demo/
+	Relying party trust identifier - value put into web.config key "ast:realmADFSId" - Next
+		(using urn makes this easier to differentiate, but could be URL or URI)
+	I do not want to configure multi-factor ... at this time - Next
+	Permit all users to access this relying party - Next
+	Summary tabs - Next
+	Leave "Open the Edit Claim Rules dialog" checked, click Close
+
+11) In ADFS, add Claim Rules in "Edit Claim Rules" dialog
+	Click "Add Rule..."
+	Use default "Send LDAP Attributes as Claims" - Next
+	Claim Rule Name - "Basic Claims"
+	Attribute store: Active Directory
+	LDAP Attribute: "SAM-Account-Name" -- Outgoing: "Name ID"
+	Display-Name -- "Name"
+	Click "Finish"
+	Click OK
+
+12) In Filter Config, add AuthorizeAttribute
+13) In Home controller, add AllowAnonymous to Index method
+14) Add _LoginPartial to Shared Views, add @Html.Partial for same to _TopNav
+16) Test by starting app and clicking on "Rehearsals (MVC)"
+17) Added ClientInfo action to Tests controller, related ViewModels and View
+18) Added Link to ClientInfo on Tests index page
