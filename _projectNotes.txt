@@ -200,3 +200,18 @@ Includes getting refresh token from ADFS,
 28) Added AngularTest action to Test controller
 29) Added View for AngularTest
 30) Added initial code to AngularTest action method to get token back from database
+
+********************************************
+PART D - AngularJS mini-SPA for Auth testing
+********************************************
+
+0) additional cleanup from having removed modernizr
+
+** Initial structure for Angular test app (mini-SPA)
+
+1) added folders app, app\test
+2) added Angular (Ng) module appTest.js
+3) added Ng factory appTest.config.js
+4) added Ng module testconfig.route.js
+5) added Ng controller testMain.js and view testMain.html
+6) Test - ensure Angular page shows up on "Angular Test" MVC page

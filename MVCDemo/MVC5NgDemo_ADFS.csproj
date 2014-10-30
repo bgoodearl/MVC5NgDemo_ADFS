@@ -231,6 +231,11 @@
     <Compile Include="ViewModels\Test\InfoItem.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\appTest.js" />
+    <Content Include="app\test\appTest.config.js" />
+    <Content Include="app\test\testconfig.route.js" />
+    <Content Include="app\test\testMain.html" />
+    <Content Include="app\test\testMain.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number (yywwd) - yy=year, ww=week of year, d = day of week (0 = Sunday)
 //      Revision
 //
-[assembly: AssemblyVersion("0.2.14443.1")]
-[assembly: AssemblyFileVersion("0.2.14443.1")]
+[assembly: AssemblyVersion("0.2.14444.1")]
+[assembly: AssemblyFileVersion("0.2.14444.1")]
