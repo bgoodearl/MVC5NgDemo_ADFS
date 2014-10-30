@@ -87,7 +87,7 @@ PART B - Adding Auth for MVC App using ADFS
 	No token encryption - Next
 	WS-Federation - add endpoint (from app properties in VS, plus "demo" used with routing) - Next
 		https://localhost:44306/demo/
-	Relying party trust identifier - value put into web.config key "ast:realmADFSId" - Next
+	Relying party trust identifier - value put into web.config key e.g. "ast:realmADFSId" - Next
 		(using urn makes this easier to differentiate, but could be URL or URI)
 	I do not want to configure multi-factor ... at this time - Next
 	Permit all users to access this relying party - Next
@@ -110,3 +110,93 @@ PART B - Adding Auth for MVC App using ADFS
 16) Test by starting app and clicking on "Rehearsals (MVC)"
 17) Added ClientInfo action to Tests controller, related ViewModels and View
 18) Added Link to ClientInfo on Tests index page
+
+***********************************************
+PART C - Get token from ADFS for use by Angular
+Includes getting refresh token from ADFS,
+	Encrypting and saving refresh token to database
+	Getting refresh token decrypting and using it to
+	get an auth token
+	First Angular code will be added in Part D
+***********************************************
+
+1) Added packages:
+	Microsoft.IdentityModel.Clients.ActiveDirectory (2.11.10918.1222)
+	Microsoft.AspNet.WebApi.Owin (5.2.2)
+	Microsoft.Owin.Security.Jwt (3.0.0)
+	Microsoft.Owin.Security.ActiveDirectory (3.0.0)
+
+1a) Updated Homepage message
+
+2) Updated Startup - added SecurityTokenValidated method
+
+3) In ADFS, Added a second Relying Party Trust for WebAPI token access
+	Enter data about the relying party manually - Next
+	Enter the Display Name, and any Notes that will be helpful - Next
+	AD FS profile - Next
+	No token encryption - Next
+	Neither WS-Federation nor SAML
+	Relying party trust identifier - value put into web.config key e.g. "ast:MVC5NgCCDemoWebAPI" - Next
+		(using urn makes this easier to differentiate, but could be URL or URI)
+	I do not want to configure multi-factor ... at this time - Next
+	Permit all users to access this relying party - Next
+	Summary tabs - Next
+	Leave "Open the Edit Claim Rules dialog" checked, click Close
+
+4) In ADFS, add Claim Rules in "Edit Claim Rules" dialog
+	Click "Add Rule..."
+	Use default "Send LDAP Attributes as Claims" - Next
+	Claim Rule Name - "Basic Claims"
+	Attribute store: Active Directory
+	LDAP Attribute: "SAM-Account-Name" -- Outgoing: "Name ID"
+	Display-Name -- "Name"
+	Click "Finish"
+	Click OK
+
+5) ON ADFS Server - start PowerShell as admin
+	(do web search for ADFS Powershell if the commands below aren't installed')
+	Update the URL below as necessary CASE MUST MATCH EXACTLY the case used in the configuration in web.config
+	ClientId value MUST be unique for ADFS server and must match excactly the value in the web.config
+	Name must be unique for ADFS server
+
+	Add-AdfsClient -ClientId TokenClientCC101 -RedirectUri https://localhost:44307/demo/auth/loggedin2 -Name "MVC5Demo CC WebAPI Token Callback"
+
+	Run to get info: (use identifier configured using key "ast:webApiADFSId" in web.config)
+
+	Get-AdfsRelyingPartyTrust -Identifier urn:MVC5NgCCDemoWebAPI 
+
+	Set-AdfsRelyingPartyTrust -TargetIdentifier urn:MVC5NgCCDemoWebAPI -IssueOAuthRefreshTokensTo AllDevices
+
+6) Run web app, set breakpoint on Auth.LoggedIn2 - make sure there's a "code" value
+
+7) Added class UserInfo to BGoodMusic.Models
+8) Updated IBGoodMusicRepository, BGoodMusicDBContext
+9) Added migration (see _MigrationNotes.txt in BGoodMusic.EFDAL)
+10) saved SQL script from migration as Schema_S2_AddUserInfo, updated script
+11) Ran SQL script to add table to working demo database
+12) Added ClaimsHelper, CommonDefs and MachineKeyHelper in Infrastructure
+13) Added DemoControllerBase in Controllers
+14) Modify Auth controller to inherit from DemoControllerBase
+15) Added code to Auth.LoggedIn2 and supporting methods in Auth controller
+16) Added ViewBag.Message display to LoggedIn2 view
+18) Added call to CleanupForLogout to Auth.Logout
+
+19) Test:
+	Log in and get to https://localhost:44307/demo/auth/LoggedIn
+	(as opposed to getting to https://localhost:44307/demo/auth/LoggedIn2 and seeing messages on the page)
+	Check table bgm_UserInfo in database to see entry with encrypted refresh token
+	Log out and see that entry in database is removed
+
+20) Added Models\Test\AuthInfoResponse.cs and ClaimInfo.cs
+21) Added Controllers\API\TestAuthInfoController
+22) Added app.UseActiveDirectoryFederationServicesBearerAuthentication to Startup
+
+23) Added CamelCasePropertyNamesContractResolver to WebApiConfig
+24) Added SuppressDefaultHostAuthentication and HostAuthenticationFilter to WebApiConfig
+24) Added AuthorizeAttribute to WebApiConfig filters
+25) Try https://localhost:44307/api/TestAuthInfo from browser and confirm authorization denied
+26) Added TokenInfo to ViewModels\Shared
+27) Added AngularTest to ViewModels\Test
+28) Added AngularTest action to Test controller
+29) Added View for AngularTest
+30) Added initial code to AngularTest action method to get token back from database

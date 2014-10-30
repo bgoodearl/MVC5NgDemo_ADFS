@@ -5,3 +5,10 @@
 
 <h2>Tests</h2>
 
+<ul>
+@if (Request.IsAuthenticated)
+{
+    <li>@Html.ActionLink("Angular Test", "AngularTest", "Test", new { area = "" }, null)</li>
+}
+    <li>@Html.ActionLink("Client Info", "ClientInfo", "Test", new { area = "" }, null)</li>
+</ul>

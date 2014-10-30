@@ -57,6 +57,10 @@
     <Compile Include="Migrations\201410241610511_Schema1.Designer.cs">
       <DependentUpon>201410241610511_Schema1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410260004036_S2_AddUserInfo.cs" />
+    <Compile Include="Migrations\201410260004036_S2_AddUserInfo.Designer.cs">
+      <DependentUpon>201410260004036_S2_AddUserInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -71,6 +75,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201410241610511_Schema1.resx">
       <DependentUpon>201410241610511_Schema1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410260004036_S2_AddUserInfo.resx">
+      <DependentUpon>201410260004036_S2_AddUserInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

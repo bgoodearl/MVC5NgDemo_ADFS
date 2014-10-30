@@ -1,0 +1,16 @@
+﻿@using MVCDemo.Infrastructure
+@model MVCDemo.ViewModels.Test.ClientInfoViewModel
+
+@{
+    ViewBag.Title = "Client Info";
+}
+
+<h2>Client Info</h2>
+
+@if (!string.IsNullOrWhiteSpace(Model.Message))
+{
+    <p>@Html.Raw(Html.Encode(@Model.Message).Replace(Environment.NewLine, CommonDefs.SharedTags.LineBreak))</p>
+}
+<table class="table table-striped table-bordered table-condensed">
+    @Html.Partial("Partial/InfoItemList", Model.ClientInfo)
+</table>

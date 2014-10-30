@@ -10,5 +10,6 @@ namespace MVCDemo.ViewModels.Test
         }
 
         public List<InfoItem> ClientInfo { get; private set; }
+        public string Message { get; set; }
     }
 }

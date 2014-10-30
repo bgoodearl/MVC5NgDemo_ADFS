@@ -7,3 +7,10 @@ Update-Database -Script -SourceMigration:$InitialDatabase -TargetMigration:Schem
 
 Update-Database -Verbose
 
+
+Add-Migration S2_AddUserInfo
+
+Update-Database -Script -SourceMigration:Schema1 -TargetMigration:S2_AddUserInfo
+
+Update-Database -Verbose
+

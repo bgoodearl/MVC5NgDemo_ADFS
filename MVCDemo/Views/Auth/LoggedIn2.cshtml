@@ -1,0 +1,11 @@
+﻿@using MVCDemo.Infrastructure
+@{
+    ViewBag.Title = "Logged In";
+}
+
+<h2>Logged In</h2>
+
+@if (!string.IsNullOrWhiteSpace(ViewBag.Message as string))
+{
+    <p>@Html.Raw(Html.Encode(ViewBag.Message).Replace(Environment.NewLine, CommonDefs.SharedTags.LineBreak))</p>
+}

@@ -1,0 +1,15 @@
+﻿@using MVCDemo.Infrastructure
+@model MVCDemo.ViewModels.Test.AngularTest
+@{
+    ViewBag.Title = "Angular Test";
+}
+@if ((Model != null) && !string.IsNullOrWhiteSpace(Model.JsonToken))
+{
+    <div id="at-jtk1" data-tk='@Html.Raw(Model.JsonToken)' class="hidden"></div>
+}
+
+<h2>Angular Test</h2>
+@if (!string.IsNullOrWhiteSpace(ViewBag.Message as string))
+{
+    <p>@Html.Raw(Html.Encode(ViewBag.Message).Replace(Environment.NewLine, CommonDefs.SharedTags.LineBreak))</p>
+}
