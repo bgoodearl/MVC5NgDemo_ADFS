@@ -222,3 +222,23 @@ PART D - AngularJS mini-SPA for Auth testing
 10) added code/content in appTest.config, testMain.js and .html
 11) updated appTest, uncommented script tags in AngularTest.cshtml
 12) Test - go to "Angular Test" MVC page, click on "Get Auth Info" button and see claims from Web API call
+
+***********************************************
+PART E - AngularJS mini-SPA for Auth rehearsals
+***********************************************
+
+1) copied in js and html files from app/music
+2) copied appRehearsals.js
+3) copied Rehearsals action method in Music controller (server side)
+4) copied ViewModels\Music\RehearsalViewModel.cs
+5) added ActionLink in Music\Index.cshtml
+6) copied in Rehearsals.cshtml
+7) added ActionLink to Rehearsals (Ng) in _TopNav
+8) added Ng factory authInterceptorService.js
+9) updated ViewModels\Music\RehearsalViewModel - added JsonToken
+10) modified MusicController (server side) to inherit from DemoControllerBase
+11) added code to MusicController.Rehearsals to get access token
+12) added appRehearsals.config.js as appConfig (copied/adapted from Test instance)
+13) added authInterceptorService to $httpProvider in appRehearsals
+14) added Ng controller and view for authError
+15) Test - Rehearsals (Ng), Edit button, links to Ng editor from Rehearsals (MVC) list

@@ -225,13 +225,25 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Music\RehearsalListItem.cs" />
+    <Compile Include="ViewModels\Music\RehearsalViewModel.cs" />
     <Compile Include="ViewModels\Shared\TokenInfo.cs" />
     <Compile Include="ViewModels\Test\AngularTest.cs" />
     <Compile Include="ViewModels\Test\ClientInfoViewModel.cs" />
     <Compile Include="ViewModels\Test\InfoItem.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\appRehearsals.js" />
     <Content Include="app\appTest.js" />
+    <Content Include="app\music\appRehearsals.config.js" />
+    <Content Include="app\music\authError.html" />
+    <Content Include="app\music\authError.js" />
+    <Content Include="app\music\authInterceptorService.js" />
+    <Content Include="app\music\rehearsalDataService.js" />
+    <Content Include="app\music\rehearsalEdit.html" />
+    <Content Include="app\music\rehearsalEdit.js" />
+    <Content Include="app\music\rehearsalList.html" />
+    <Content Include="app\music\rehearsalList.js" />
+    <Content Include="app\music\rehearsalsconfig.route.js" />
     <Content Include="app\test\appTest.config.js" />
     <Content Include="app\test\authInterceptorService.js" />
     <Content Include="app\test\testAuthError.html" />
@@ -305,6 +317,7 @@
     <Content Include="Views\Auth\LoggedIn2.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Music\Index.cshtml" />
+    <Content Include="Views\Music\Rehearsals.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

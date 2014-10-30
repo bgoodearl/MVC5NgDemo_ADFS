@@ -1,0 +1,30 @@
+﻿@using MVCDemo.Infrastructure;
+@{
+    ViewBag.Title = "Rehearsals (Ng)";
+}
+@if ((Model != null) && !string.IsNullOrWhiteSpace(Model.JsonToken))
+{
+    <div id="at-jtk1" data-tk='@Html.Raw(Model.JsonToken)' class="hidden"></div>
+}
+
+<h2>Rehearsals (Ng)</h2>
+@if (!string.IsNullOrWhiteSpace(ViewBag.Message as string))
+{
+    <p>@Html.Raw(Html.Encode(ViewBag.Message).Replace(Environment.NewLine, CommonDefs.SharedTags.LineBreak))</p>
+}
+
+<div ng-app="appRehearsals">
+    {{foo}}
+    <div ng-view></div>
+</div>
+@section scripts
+{
+    <script src="@Url.Content("~/app/appRehearsals.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/app/music/appRehearsals.config.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/app/music/rehearsalsconfig.route.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/app/music/authInterceptorService.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/app/music/rehearsalDataService.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/app/music/authError.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/app/music/rehearsalList.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/app/music/rehearsalEdit.js")" type="text/javascript"></script>
+}
