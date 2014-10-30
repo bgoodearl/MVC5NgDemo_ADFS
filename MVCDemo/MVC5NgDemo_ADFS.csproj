@@ -233,7 +233,11 @@
   <ItemGroup>
     <Content Include="app\appTest.js" />
     <Content Include="app\test\appTest.config.js" />
+    <Content Include="app\test\authInterceptorService.js" />
+    <Content Include="app\test\testAuthError.html" />
+    <Content Include="app\test\testAuthError.js" />
     <Content Include="app\test\testconfig.route.js" />
+    <Content Include="app\test\testDataService.js" />
     <Content Include="app\test\testMain.html" />
     <Content Include="app\test\testMain.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />

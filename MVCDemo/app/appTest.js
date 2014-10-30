@@ -14,9 +14,9 @@
 
     //Pick up rootPath from div in _Layout.cshtml
     appTest.constant('appConstants', initializeAppConstants());
-    //appTest.config(function ($httpProvider) {
-    //    $httpProvider.interceptors.push('authInterceptorService');
-    //});
+    appTest.config(function ($httpProvider) {
+        $httpProvider.interceptors.push('authInterceptorService');
+    });
 
     function initializeAppConstants() {
         var appConstants = {

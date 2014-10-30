@@ -215,3 +215,10 @@ PART D - AngularJS mini-SPA for Auth testing
 4) added Ng module testconfig.route.js
 5) added Ng controller testMain.js and view testMain.html
 6) Test - ensure Angular page shows up on "Angular Test" MVC page
+**
+7) added Ng factory testDataService.js
+8) added Ng controller testAuthError.js and view testAuthError.html
+9) added Ng factory authInterceptorService.js
+10) added code/content in appTest.config, testMain.js and .html
+11) updated appTest, uncommented script tags in AngularTest.cshtml
+12) Test - go to "Angular Test" MVC page, click on "Get Auth Info" button and see claims from Web API call

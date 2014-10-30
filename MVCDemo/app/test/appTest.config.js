@@ -3,17 +3,30 @@
 
     angular
         .module('appTest')
-        .factory('appTest', appTest);
+        .factory('appConfig', appConfig);
 
-    appTest.$inject = ['$http'];
+    appConfig.$inject = ['$log'];
 
-    function appTest($http) {
-        var service = {
-            getData: getData
+    function appConfig($log) {
+        var configData = {
+            token: null
         };
 
-        return service;
+        setAppConfigData($log);
+        return configData;
 
-        function getData() { }
+        function setAppConfigData($log) {
+            try {
+                var tokenData = JSON.parse($('#at-jtk1').attr('data-tk'));
+                if (tokenData != null) {
+                    configData.token = tokenData.tk;
+                }
+                if ((configData.token == null) || (configData.token.length == 0)) {
+                    $log.log('Error', 'could not get token from at-jtk1');
+                }
+            } catch (error) {
+                $log.log('Error', error);
+            }
+        }
     }
 })();

@@ -33,18 +33,18 @@
                         nav: 1
                     }
                 }
-            }//,
-            //{
-            //    url: '/authError',
-            //    config: {
-            //        templateUrl: 'app/test/testAuthError.html',
-            //        //controller: 'testMain',
-            //        title: 'Auth Error',
-            //        settings: {
-            //            nav: 2
-            //        }
-            //    }
-            //}
+            },
+            {
+                url: '/authError',
+                config: {
+                    templateUrl: 'app/test/testAuthError.html',
+                    //controller: 'testAuthError',
+                    title: 'Auth Error',
+                    settings: {
+                        nav: 2
+                    }
+                }
+            }
         ];
     }
 
