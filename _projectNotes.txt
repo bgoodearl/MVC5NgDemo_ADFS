@@ -242,3 +242,15 @@ PART E - AngularJS mini-SPA for Auth rehearsals
 13) added authInterceptorService to $httpProvider in appRehearsals
 14) added Ng controller and view for authError
 15) Test - Rehearsals (Ng), Edit button, links to Ng editor from Rehearsals (MVC) list
+
+********************************
+PART F - Content Security Policy
+Only allow loading of script content
+from files delivered from site.
+********************************
+
+0) Updated default title suffix in _Layout
+1) Added Filters\ContentSecurityPolicyFilterAttribute
+2) Added instance of filter to RegisterGlobalFilters
+3) Added tag data-ng-csp to html root element in _Layout.cshtml
+	(Allows Angular to work with the constrained environment)
