@@ -1,0 +1,25 @@
+﻿<div data-ng-controller="rehearsalEdit as vm">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Edit Rehearsal</h2>
+            <h3>{{vm.message}}</h3>
+            <div ng-show="vm.rehearsal">
+                <form name="rehearsalEdit">
+                    <table>
+                        <!-- type="datetime-local"  -->
+                        <tr><td>Date:</td><td><input required placeholder="rehearsal date" ng-model="vm.rehearsal.date" /></td></tr>
+                        <tr><td>Time:</td><td><input required placeholder="rehearsal time" ng-model="vm.rehearsal.time" /></td></tr>
+                        <tr><td>Duration:</td><td><input ng-model="vm.rehearsal.duration" /></td></tr>
+                        <tr><td>Location:</td><td><input ng-model="vm.rehearsal.location" /></td></tr>
+                        <tr><td>Agenda:</td><td><input ng-model="vm.rehearsal.agenda" /></td></tr>
+                        <tr><td colspan="2"><button ng-click="vm.saveEdit()">Save</button></td></tr>
+                    </table>
+                </form>
+            </div>
+            <div ng-hide="vm.rehearsal">
+                <h3>rehearsal {{vm.id}} not found.</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="#/">Back to list</a>
